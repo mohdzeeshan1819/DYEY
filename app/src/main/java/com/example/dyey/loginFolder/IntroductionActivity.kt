@@ -1,5 +1,6 @@
 package com.example.dyey.loginFolder
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -31,10 +32,20 @@ class IntroductionActivity : AppCompatActivity() {
     }
 
     fun onNextButtonClick() {
-        val currentItem =  binding.viewPager.currentItem
-        if (currentItem <  binding.viewPager.adapter?.count ?: 0 - 1) {
-            binding.viewPager.setCurrentItem(currentItem + 1, true)
+        try{
+            val currentItem =  binding.viewPager.currentItem
+            if (currentItem < (binding.viewPager.adapter?.count ?: (0 - 1))) {
+                binding.viewPager.setCurrentItem(currentItem + 1, true)
+            }
+            else{
+                val intent = Intent(this, SignUpActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        } catch (e:Exception){
+
         }
+
     }
 }
 
