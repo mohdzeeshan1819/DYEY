@@ -2,6 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,13 +28,13 @@
             android:name=".homeFolder.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".loginFolder.AddPhotos"
+            android:name=".authentication.AddPhotos"
             android:exported="false" />
         <activity
-            android:name=".loginFolder.UploadID"
+            android:name=".authentication.UploadID"
             android:exported="false" />
         <activity
-            android:name=".loginFolder.SignUpActivity"
+            android:name=".authentication.SignUp.SignUp"
             android:exported="false" />
         <activity
             android:name=".loginFolder.IntroductionActivity"

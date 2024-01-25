@@ -1,4 +1,4 @@
-package com.example.dyey.loginFolder
+package com.example.dyey.authentication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

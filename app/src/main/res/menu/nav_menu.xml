@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_gmail"
+        android:title="Home"  />
+
+    <item
+        android:id="@+id/offer"
+        android:icon="@drawable/ic_education"
+        android:title="Offer" />
+    <item
+        android:id="@+id/message"
+        android:icon="@drawable/ic_education"
+        android:title="Message" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_education"
+        android:title="Setting" />
+</menu>

@@ -56,21 +56,61 @@
                     android:gravity="center" />
             </LinearLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_11sdp"
+                    android:padding="@dimen/_1sdp"
                     android:background="@drawable/doted_corner"
                     android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:src="@drawable/ic_add_pic"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_gravity="center" />
-                </LinearLayout>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/image1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY" />
+
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:src="@drawable/ic_add_pic" />
+
+                        <ImageView
+                            android:id="@+id/image2"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_gravity="bottom"
+                            android:src="@drawable/ic_camera"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -176,7 +216,7 @@
 
 
 
-                    <EditText
+                    <TextView
                         android:id="@+id/gender"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -187,6 +227,7 @@
                         android:background="@color/white"
                         android:textSize="@dimen/_10sdp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         />
 
                         <ImageView
@@ -217,6 +258,7 @@
                         android:src="@drawable/ic_calender"
                         />
                     <LinearLayout
+                        android:id="@+id/dobLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -226,7 +268,7 @@
                         android:paddingLeft="@dimen/_15sdp">
 
 
-                    <EditText
+                        <TextView
                         android:id="@+id/dob"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -235,6 +277,8 @@
                         android:background="@drawable/edittext_style"
                         android:textColorHint="@color/black"
                         android:textColor="@color/black"
+
+                            android:gravity="center_vertical"
                         android:textSize="@dimen/_10sdp"
                         android:layout_weight="1"
 
@@ -275,7 +319,7 @@
                         android:background="@drawable/edittext_style"
                         android:paddingLeft="@dimen/_15sdp">
 
-                    <EditText
+                        <TextView
                         android:id="@+id/education"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -286,6 +330,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         android:layout_weight="1"
+                            android:gravity="center_vertical"
                         />
                         <ImageView
                             android:layout_width="wrap_content"
@@ -324,7 +369,7 @@
                         android:background="@drawable/edittext_style"
                         android:paddingLeft="@dimen/_15sdp">
 
-                        <EditText
+                        <TextView
                             android:id="@+id/height"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -335,6 +380,8 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10sdp"
                             android:layout_weight="1"
+                            android:gravity="center_vertical"
+
                             />
                         <ImageView
                             android:layout_width="wrap_content"
@@ -399,6 +446,108 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Favrorit food"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:inputType="textCapWords"
+                        android:background="@drawable/edittext_style"
+                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:textSize="@dimen/_10sdp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    >
+
+                    <ImageView
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:src="@drawable/ic_gmail"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="end"
+                        android:weightSum="2"
+                        android:background="@drawable/edittext_style"
+                        android:paddingLeft="@dimen/_15sdp">
+
+                        <EditText
+                            android:id="@+id/gmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Enter gmail"
+                            android:inputType="textCapWords"
+                            android:background="@drawable/edittext_style"
+                            android:textColorHint="@color/black"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    >
+
+                    <ImageView
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:src="@drawable/ic_padlock"
+                        />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Enter password"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:inputType="textCapWords"
+                        android:background="@drawable/edittext_style"
+                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:textSize="@dimen/_10sdp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    >
+
+                    <ImageView
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:src="@drawable/ic_padlock"
+                        />
+
+                    <EditText
+                        android:id="@+id/confirmPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Enter confirm password"
                         android:paddingLeft="@dimen/_10sdp"
                         android:inputType="textCapWords"
                         android:background="@drawable/edittext_style"

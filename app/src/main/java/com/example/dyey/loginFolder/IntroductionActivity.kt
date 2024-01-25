@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.dyey.authentication.SignUp.SignUp
 import com.example.dyey.databinding.ActivityIntroductionBinding
 
 class IntroductionActivity : AppCompatActivity() {
@@ -25,9 +26,16 @@ class IntroductionActivity : AppCompatActivity() {
 
     }
     fun onPreviousButtonClick() {
-        val currentItem =  binding.viewPager.currentItem
-        if (currentItem > 0) {
-            binding.viewPager.setCurrentItem(currentItem - 1, true)
+        try {
+
+
+            val currentItem = binding.viewPager.currentItem
+            if (currentItem > 0) {
+                binding.viewPager.setCurrentItem(currentItem - 1, true)
+            }
+        }
+        catch(e:Exception){
+
         }
     }
 
@@ -38,7 +46,7 @@ class IntroductionActivity : AppCompatActivity() {
                 binding.viewPager.setCurrentItem(currentItem + 1, true)
             }
             else{
-                val intent = Intent(this, SignUpActivity::class.java)
+                val intent = Intent(this, SignUp::class.java)
                 startActivity(intent)
                 finish()
             }
