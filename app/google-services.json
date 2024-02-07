@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "50857448767",
+    "project_id": "dyey-77a4d",
+    "storage_bucket": "dyey-77a4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50857448767:android:3c23d8ce1f95614952af8a",
+        "android_client_info": {
+          "package_name": "com.example.dyey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxs3MsAtVnJlrQGxsU34-NOg58FhbzTyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

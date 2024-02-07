@@ -20,6 +20,7 @@ import com.example.dyey.apiInterfaces.AppInfo
 import com.example.dyey.apiInterfaces.RetrofitInstance
 import com.example.dyey.authentication.UploadID
 import com.example.dyey.databinding.ActivitySignUpBinding
+import com.example.dyey.homeFolder.ChatActivity
 import com.example.dyey.homeFolder.HomeActivity
 import com.example.dyey.loginFolder.IntroductionActivity
 import com.google.gson.Gson
@@ -67,9 +68,10 @@ class SignUp : AppCompatActivity(),DatePickerDialog.OnDateSetListener {
         binding.login.setOnClickListener {
             validation()
             saveUserDataToSharedPreferences()
+            postdataapi()
             checkIfUserSignedIn()
+
         }
-        checkIfUserSignedIn()
         init()
     }
 
@@ -140,10 +142,10 @@ class SignUp : AppCompatActivity(),DatePickerDialog.OnDateSetListener {
 
         if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
             // User is signed in, navigate to main activity
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, ChatActivity::class.java))
             finish()
         } else {
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, ChatActivity::class.java))
             finish()
         }
     }
