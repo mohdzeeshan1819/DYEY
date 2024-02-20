@@ -1,60 +1,108 @@
 package com.example.dyey.homeFolder.OfferFragment
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.dyey.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dyey.apiInterfaces.ApiServices
+import com.example.dyey.apiInterfaces.AppInfo
+import com.example.dyey.apiInterfaces.RetrofitInstance
+import com.example.dyey.databinding.FragmentOffersBinding
+import com.example.dyey.homeFolder.OfferFragment.CreateOffer.CreateOffer
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [OffersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class OffersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var binding: FragmentOffersBinding
+    private lateinit var adapter: offersAdapter
+    private val offerList: ArrayList<OfferDetails> = ArrayList()
+    private val retrofitInstance = RetrofitInstance()
+    private var apiService: ApiServices? = retrofitInstance.apiService
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_offers, container, false)
+        binding = FragmentOffersBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment OffersFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            OffersFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        apiService = RetrofitInstance().apiService
+        getOfferDetails()
+        binding.createoffers.setOnClickListener(){
+            startActivity(Intent(context,CreateOffer::class.java))
+        }
+
     }
+
+
+
+    private fun getOfferDetails() {
+        apiService?.getOfferDetails("Bearer ${AppInfo.getToken()}")
+            ?.enqueue(object : Callback<OffersDataClass> {
+                override fun onResponse(call: Call<OffersDataClass>, response: Response<OffersDataClass>) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        responseBody?.offerDetails?.let { offerDetails ->
+                            if (offerDetails.isEmpty()) {
+                                Log.d("OfferDetails", "No offer details found")
+                            } else {
+                                // Filter the offer details based on user ID
+                                val currentUserID = AppInfo.getUserDeviceId()?.toInt() // Assuming this method exists
+                                val filteredOffers = offerDetails.filter { it.userId == currentUserID }
+                                if (filteredOffers.isEmpty()) {
+                                    Log.d("OfferDetails", "No offers found for current user")
+                                } else {
+                                    Log.d("OfferDetails", "Filtered Offers: $filteredOffers")
+                                    setUiForRecyclerView(ArrayList(filteredOffers))
+                                }
+                            }
+                        }
+                    } else {
+                        // Handle unsuccessful response
+                        Log.d("Offers", "Failed to fetch offer details")
+                        Toast.makeText(
+                            requireContext(),
+                            "Failed to fetch offer details",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<OffersDataClass>, t: Throwable) {
+                    // Handle network failure
+                    Log.d("Offers", "Network error: ${t.message}")
+                    Toast.makeText(
+                        requireContext(),
+                        "Network error: ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+    }
+
+
+//    private fun setUiForRecyclerView(apiResponse: ArrayList<OffersDataClass>) {
+//        binding.offers.layoutManager = LinearLayoutManager(requireContext())
+//        adapter = offersAdapter(apiResponse)
+//        binding.offers.adapter = adapter
+//        Log.d("recycler","data is coming")
+//    }
+private fun setUiForRecyclerView(offerList: ArrayList<OfferDetails>) {
+    binding.offers.layoutManager = LinearLayoutManager(requireContext())
+    adapter = offersAdapter(offerList)
+    binding.offers.adapter = adapter
+    Log.d("recycler","data is coming")
+}
+
+
 }

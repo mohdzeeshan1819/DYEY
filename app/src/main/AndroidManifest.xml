@@ -6,6 +6,8 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -20,18 +22,46 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DYEY"
         tools:targetApi="31">
         <activity
-            android:name=".homeFolder.ChatActivity"
+            android:name=".homeFolder.OfferFragment.CreateOffer.OfferEndActivty.SubmitOffers"
+            android:exported="false" />
+        <activity
+            android:name=".homeFolder.OfferFragment.CreateOffer.OfferEndActivty.OfferEnd"
+            android:exported="false" />
+        <activity
+            android:name=".homeFolder.OfferFragment.CreateOffer.RestaurantDetails.RestaurantDetails"
+            android:exported="false" />
+        <activity
+            android:name=".homeFolder.OfferFragment.CreateOffer.SearchByCuisin"
+            android:exported="false" />
+        <activity
+            android:name=".homeFolder.OfferFragment.CreateOffer.LocationCreate"
+            android:exported="false" />
+        <activity
+            android:name=".homeFolder.OfferFragment.CreateOffer.CreateOffer"
+            android:exported="false" />
+        <activity
+            android:name=".homeFolder.HomeFragment.UserDetails.UsersProfile"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.ForgotPassword.ChangePassword"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.ForgotPassword.Verification"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.ForgotPassword.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".authentication.SignIn.SignIn"
             android:exported="false" />
         <activity
             android:name=".homeFolder.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".authentication.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".authentication.UploadID"

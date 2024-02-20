@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.dyey.R
-import com.example.dyey.authentication.SignUp.SignUpDataClass
+import com.example.dyey.authentication.SignUp.SignUpData
 import com.example.dyey.homeFolder.HomeFragment.HomeFragment
 import com.example.dyey.homeFolder.MessageFragment.MessageFragment
 import com.example.dyey.homeFolder.OfferFragment.OffersFragment
-import com.example.dyey.homeFolder.SettingFragment.SettingsFragment
+import com.example.dyey.homeFolder.ProfileFragment.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 
@@ -19,8 +19,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        val userData = getUserDataFromSharedPreferences()
 
+        loadFragment(HomeFragment())
+        val userData = getUserDataFromSharedPreferences()
         // Now you can use userData in your HomeActivity
         // Example: display the first name in a TextView
         bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView
@@ -42,7 +43,8 @@ class HomeActivity : AppCompatActivity() {
                     loadFragment(SettingsFragment())
                     true
                 }
-                else -> false
+                else -> {    loadFragment(HomeFragment())
+                    true}
             }
         }
     }
@@ -53,7 +55,7 @@ class HomeActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    private fun getUserDataFromSharedPreferences(): SignUpDataClass? {
+    private fun getUserDataFromSharedPreferences(): SignUpData? {
         val sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
 
         // Retrieve JSON string from SharedPreferences
@@ -61,6 +63,6 @@ class HomeActivity : AppCompatActivity() {
 
         // Convert JSON string to UserData object
         val gson = Gson()
-        return gson.fromJson(userDataJson, SignUpDataClass::class.java)
+        return gson.fromJson(userDataJson, SignUpData::class.java)
     }
 }

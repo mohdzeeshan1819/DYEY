@@ -47,7 +47,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sign in"
+                    android:text="Sign Up"
                     android:layout_weight="1"
                     android:textSize="@dimen/_18sdp"
                     android:maxLines="1"
@@ -606,6 +606,37 @@
                     android:layout_gravity="center"
                     android:textStyle="bold"
                     android:gravity="center" />
+
+                <RelativeLayout
+                    android:id="@+id/signin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center_horizontal"
+                    >
+
+
+                    <TextView
+                        android:id="@+id/user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Already have an account? "
+                        android:gravity="center"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Sign In"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_toRightOf="@+id/user"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"/>
+
+                </RelativeLayout>
             </LinearLayout>
 
         </ScrollView>

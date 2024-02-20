@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_gmail"
-        android:title="Home"  />
+        android:icon="@drawable/ic_calender"
+        android:title="Home"
+        />
 
     <item
         android:id="@+id/offer"
@@ -11,10 +13,10 @@
         android:title="Offer" />
     <item
         android:id="@+id/message"
-        android:icon="@drawable/ic_education"
+        android:icon="@drawable/ic_message"
         android:title="Message" />
     <item
         android:id="@+id/settings"
-        android:icon="@drawable/ic_education"
-        android:title="Setting" />
+        android:icon="@drawable/ic_name"
+        android:title="Profile" />
 </menu>

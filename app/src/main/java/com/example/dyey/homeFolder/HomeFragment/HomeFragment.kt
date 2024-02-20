@@ -1,60 +1,114 @@
 package com.example.dyey.homeFolder.HomeFragment
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.dyey.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.example.dyey.apiInterfaces.ApiServices
+import com.example.dyey.apiInterfaces.AppInfo
+import com.example.dyey.apiInterfaces.RetrofitInstance
+import com.example.dyey.databinding.FragmentHomeBinding
+import com.example.dyey.homeFolder.HomeFragment.UserDetails.UsersProfile
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class HomeFragment : Fragment(),OnItemClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var adapter: HomeAdapter
+    private val userList: ArrayList<Users> = ArrayList()
+    private val retrofitInstance = RetrofitInstance()
+    private val apiService: ApiServices? = retrofitInstance.apiService
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fetchHomeData()
+    }
+    private fun fetchHomeData() {
+        val request = HomeRequest()
+        request.age = ArrayList()
+        request.miles = ArrayList()
+        request.filter = ""
+
+        apiService?.getHomeData("Bearer ${AppInfo.getToken()}",request)
+            ?.enqueue(object : Callback<HomeDataClass> {
+                override fun onResponse(
+                    call: Call<HomeDataClass>,
+                    response: Response<HomeDataClass>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        responseBody?.let { homeData ->
+                            if (homeData.status == true) {
+                                userList.addAll(homeData.users)
+                                setUiForRecyclerView()
+                                Log.d("HomeData", responseBody.users.toString())
+
+                            } else {
+                                Log.d("HomeData", "No users found")
+                            }
+                        }
+                    } else {
+                        // Handle API error
+                        Log.d("HomeData1", "Failed to fetch home data: ${response.message()}")
+                        Toast.makeText(
+                            requireContext(),
+                            "Failed to fetch home data",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<HomeDataClass>, t: Throwable) {
+                    // Handle network error
+                    Log.d("HomeData2", "Network error: ${t.message}")
+                    Toast.makeText(
+                        requireContext(),
+                        "Network error: ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+    }
+    override fun onItemClick(position: Int) {
+        val user = userList[position]
+        val intent = Intent(context, UsersProfile::class.java)
+        intent.putExtra("USER_ID", user.id)
+        intent.putExtra("FULL_NAME",user.firstName+" "+user.lastName)
+        intent.putExtra("ABOUT",user.about)
+        intent.putExtra("GENDER",user.gender)
+        intent.putExtra("EDUCATION",user.education)
+        intent.putExtra("SIGN",user.sign)
+        intent.putExtra("LONGITUDE",user.longitude)
+        intent.putExtra("PROFESSION",user.profession)
+        intent.putExtra("favfood",user.favoriteFood)
+        intent.putExtra("profilePic",user.profileImageUrl)
+        intent.putExtra("height",user.height)
+        intent.putExtra("status",user.adminStatus)
+
+
+        startActivity(intent)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setUiForRecyclerView() {
+        adapter = HomeAdapter(userList,this)
+        binding.offers.adapter = adapter
     }
+
+
 }

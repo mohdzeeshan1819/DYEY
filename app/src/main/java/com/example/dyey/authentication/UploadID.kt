@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.dyey.authentication.SignUp.SignUp
 import com.example.dyey.databinding.ActivityUploadIdBinding
-import com.example.dyey.homeFolder.ChatActivity
+import com.example.dyey.homeFolder.HomeActivity
 
 class UploadID : AppCompatActivity() {
     private lateinit var binding : ActivityUploadIdBinding
@@ -19,7 +19,7 @@ class UploadID : AppCompatActivity() {
             finish()
         }
         binding.skip.setOnClickListener {
-            startActivity(Intent(this, ChatActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }
