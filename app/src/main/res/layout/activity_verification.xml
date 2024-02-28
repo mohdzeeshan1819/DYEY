@@ -37,6 +37,7 @@
                 android:gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black"
                 android:text="We have sent OTP on your email"/>
             <TextView
                 android:layout_width="match_parent"
@@ -56,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="Resend OTP in 00:56"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:gravity="center_horizontal"
                 android:layout_marginHorizontal="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_55sdp"

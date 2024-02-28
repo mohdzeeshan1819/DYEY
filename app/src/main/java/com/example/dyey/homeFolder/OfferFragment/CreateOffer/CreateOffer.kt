@@ -6,10 +6,13 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.dyey.apiInterfaces.AppInfo
 import com.example.dyey.databinding.ActivityCreateOfferBinding
+import com.example.dyey.homeFolder.HomeActivity
+import com.example.dyey.homeFolder.OfferFragment.OffersFragment
 
 class CreateOffer : AppCompatActivity() {
 
@@ -33,6 +36,10 @@ class CreateOffer : AppCompatActivity() {
         binding.amazing.setOnClickListener { selectSecondCard(binding.amazing) }
 
         binding.SignIn.setOnClickListener { saveAndNavigate() }
+        binding.back.setOnClickListener(){
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
 
     private fun selectFirstCard(card: View) {
@@ -73,11 +80,18 @@ class CreateOffer : AppCompatActivity() {
             binding.amazing -> binding.amazingtext.text.toString()
             else -> ""
         }
-
-        saveSelectedCards(selectedFirstText, selectedSecondText)
-
-        val intent = Intent(this, LocationCreate::class.java)
-        startActivity(intent)
+        if (selectedFirstText.isNotEmpty() && selectedSecondText.isNotEmpty()) {
+            saveSelectedCards(selectedFirstText, selectedSecondText)
+            val intent = Intent(this, LocationCreate::class.java)
+            startActivity(intent)
+        } else {
+            // Display a toast message if no cards are selected
+            Toast.makeText(this, "Please select at least one card", Toast.LENGTH_SHORT).show()
+        }
+//
+//        saveSelectedCards(selectedFirstText, selectedSecondText)
+//        val intent = Intent(this, LocationCreate::class.java)
+//        startActivity(intent)
     }
 
     private fun saveSelectedCards(selectedFirstText: String, selectedSecondText: String) {

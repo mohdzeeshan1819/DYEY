@@ -43,8 +43,8 @@ class HomeActivity : AppCompatActivity() {
                     loadFragment(SettingsFragment())
                     true
                 }
-                else -> {    loadFragment(HomeFragment())
-                    true}
+                else -> {
+                    false}
             }
         }
     }

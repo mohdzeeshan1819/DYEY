@@ -27,7 +27,18 @@
                     android:weightSum="2"
                     android:paddingBottom="@dimen/_5sdp"
                     android:gravity="center">
-
+                    <TextView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="back"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:textColor="@color/black"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:background="@drawable/unselected_btn"
+                        />
 
 
                     <ImageView
@@ -95,11 +106,11 @@
                         android:src="@drawable/ic_location"
                         />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/edittext"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Enter Email Address"
+                        android:hint="Enter Location"
                         android:paddingLeft="@dimen/_10sdp"
                         android:inputType="textCapWords"
                         android:gravity="center_vertical"

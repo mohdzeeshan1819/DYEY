@@ -4,6 +4,7 @@ package com.example.dyey.homeFolder.OfferFragment.CreateOffer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dyey.R
@@ -19,7 +20,7 @@ class SearchByCousinAdapter(private val locations: List<String>, private val lis
         val location = locations[position]
         holder.locationTextView.text=location.toString()
 //        holder.bind(location)
-       holder.locationTextView.setOnClickListener() {
+       holder.layout.setOnClickListener() {
             listener.onItemClick(location)
         }
 
@@ -31,6 +32,7 @@ class SearchByCousinAdapter(private val locations: List<String>, private val lis
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val locationTextView: TextView = itemView.findViewById(R.id.address)
+        val layout:RelativeLayout=itemView.findViewById(R.id.relativeLayout)
 
 //        fun bind(location: String) {
 //            locationTextView.text = location

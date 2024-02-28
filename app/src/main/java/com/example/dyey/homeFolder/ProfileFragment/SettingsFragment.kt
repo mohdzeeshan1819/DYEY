@@ -15,7 +15,10 @@ import com.example.dyey.apiInterfaces.ApiServices
 import com.example.dyey.apiInterfaces.AppInfo
 import com.example.dyey.apiInterfaces.RetrofitInstance
 import com.example.dyey.authentication.SignIn.SignIn
+import com.example.dyey.authentication.SignUp.SignUp
 import com.example.dyey.databinding.FragmentSettingsBinding
+import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.DeleteAccountResponse
+import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.SettingActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,8 +30,11 @@ class SettingsFragment : Fragment() {
     private lateinit var binding:FragmentSettingsBinding
     private val retrofitInstance = RetrofitInstance()
     private val apiService: ApiServices? = retrofitInstance.apiService
+    private var call: Call<ProfileDataClass>? = null
     private var deviceToken=""
     private var deviceId = ""
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,25 +47,16 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fetchProfileData()
-        binding.logout.setOnClickListener(){
-            logout()
+
+        binding.settings.setOnClickListener(){
+            startActivity(Intent(requireContext(), SettingActivity::class.java))
+            requireActivity().finish()
         }
 
     }
 
-    private fun logout() {
-        // Clear the login state
-        saveLoginState(false)
-        startActivity(Intent(requireContext(), SignIn::class.java))
-        requireActivity().finish()
-    }
 
-    private fun saveLoginState(isLoggedIn: Boolean) {
-        val sharedPreferences = requireContext().getSharedPreferences("login_state", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("is_logged_in", isLoggedIn)
-        editor.apply()
-    }
+
     private fun fetchProfileData() {
 
         apiService?.getProfile("Bearer ${AppInfo.getToken()}")
@@ -75,9 +72,10 @@ class SettingsFragment : Fragment() {
                                 val image = profileData.user?.profileImageUrl.toString()
                                 Glide.with(requireContext())// Context or Fragment reference
                                     .load(image)
-                                    .placeholder(R.drawable.ic_logo2) // Replace default_image with the ID of your default image resource
+                                    .placeholder(R.drawable.ic_search_by_cuisin) // Replace default_image with the ID of your default image resource
                                     .into(binding.profilePic)
-                                binding.name.text = profileData.user?.lastName.toString()
+                            val first_name=profileData.user?.firstName.toString()
+                                binding.name.text = first_name+" "+profileData.user?.lastName.toString()
                                 binding.aboutme.text = profileData.user?.about.toString()
                                 binding.education.text = profileData.user?.education.toString()
                                 binding.Sign.text = profileData.user?.sign.toString()
@@ -117,10 +115,23 @@ class SettingsFragment : Fragment() {
 
                 }
             })
+
+
+
     }
 
 
+    override fun onStop() {
+        super.onStop()
+        // Cancel the API call when the fragment is stopped
+        call?.cancel()
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Cancel the API call when the fragment's view is destroyed
+        call?.cancel()
+    }
 
 
 }

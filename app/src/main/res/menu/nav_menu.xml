@@ -13,7 +13,7 @@
         android:title="Offer" />
     <item
         android:id="@+id/message"
-        android:icon="@drawable/ic_message"
+        android:icon="@android:drawable/ic_menu_send"
         android:title="Message" />
     <item
         android:id="@+id/settings"

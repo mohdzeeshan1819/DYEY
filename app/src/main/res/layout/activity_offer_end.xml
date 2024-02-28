@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#EAE4E4"
         tools:context=".homeFolder.OfferFragment.CreateOffer.OfferEndActivty.OfferEnd">
 
         <LinearLayout
@@ -40,13 +41,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingBottom="@dimen/_10sdp"
+                        android:background="#EAE4E4"
+                        android:backgroundTint="#EAE4E4"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_default" />
+
+                    <TextView
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="back"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/unselected_btn"
+                        />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
+                        android:backgroundTint="@color/white"
+                        android:background="@color/white"
                         android:layout_marginBottom="@dimen/_50sdp"
                         android:layout_marginHorizontal="@dimen/_15sdp"
                         app:cardCornerRadius="@dimen/_15sdp">
@@ -67,10 +84,9 @@
                         android:layout_gravity="bottom"
                         android:gravity="center"
                         android:text="Xeeshan"
-                        android:layout_marginHorizontal="@dimen/_60sdp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_17sdp" />
+                        android:textSize="@dimen/_15sdp" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -125,8 +141,10 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:background="@color/white"
                                     android:orientation="vertical">
                                     <TextView
+                                        android:id="@+id/select"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="bottom"

@@ -5,6 +5,12 @@
     <data>
 
     </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EAE4E4"
+        >
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_55sdp"
@@ -64,7 +71,7 @@
                 android:layout_height="match_parent"
                 android:hint="Enter Email Address"
                 android:paddingLeft="@dimen/_10sdp"
-                android:inputType="textCapWords"
+                android:inputType="textEmailAddress"
                 android:background="@drawable/edittext_style"
                 android:textColorHint="@color/black"
                 android:textColor="@color/black"
@@ -78,6 +85,7 @@
             android:text="Password"
             android:layout_marginTop="@dimen/_5sdp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginHorizontal="@dimen/_8sdp"
             />
         <LinearLayout
@@ -117,6 +125,7 @@
             android:layout_height="wrap_content"
             android:text="Forgot Password?"
             android:layout_gravity="end"
+            android:textColor="@color/black"
             android:textStyle="bold"
             />
         <TextView
@@ -157,6 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="Don’t have an account? " />
 
             <TextView
@@ -175,4 +185,6 @@
 
 
     </LinearLayout>
+    </ScrollView>
+
 </layout>

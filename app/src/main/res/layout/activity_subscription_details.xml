@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:background="#EAE4E4"
+        tools:context=".homeFolder.ProfileFragment.SettingActiviy.Subscription.SubscriptionDetails">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingBottom="@dimen/_5sdp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textSize="@dimen/_10sdp"
+                android:maxLines="1"
+                android:layout_weight="1"
+                android:padding="@dimen/_3sdp"
+                android:background="@drawable/unselected_btn"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                android:layout_weight="1"
+                android:textSize="@dimen/_18sdp"
+                android:maxLines="1"
+                android:visibility="invisible"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:gravity="center" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_130sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_subscription_details_logo"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CURRENT PLAN"
+            android:textSize="@dimen/_20sdp"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10 Days Left!"
+            android:textSize="@dimen/_18sdp"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="#B93E8F"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center" />
+
+
+
+    </LinearLayout>
+</layout>

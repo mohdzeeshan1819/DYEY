@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:context=".homeFolder.OfferFragment.RestaurantDetail.RestaurantAbout">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp"
+            android:background="@drawable/ic_restaurant_details_bg">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="back"
+                    android:textColor="@color/black"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    android:background="@drawable/unselected_btn"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Offer details"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/_20sdp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time Remaning"
+                android:textColor="#D6D3D3"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/_17sdp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_43sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/_70sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:background="@drawable/ic_dark_blue_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:paddingVertical="@dimen/_3sdp"
+                    android:src="@drawable/ic_calendar_white"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12 Days"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:paddingEnd="@dimen/_6sdp"
+                    android:textSize="@dimen/_20sdp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Restaurant Name"
+                android:textColor="#D6D3D3"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/_17sdp"/>
+
+            <TextView
+                android:id="@+id/restraName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Leaf Restaurant"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:textSize="@dimen/_17sdp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_51sdp"
+                android:text="Restaurant details"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:textColor="#054189"
+                android:textStyle="bold"
+                android:background="@drawable/ic_white_bg"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/_50sdp"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/_17sdp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your Status"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    />
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Not Checked In"
+                    android:layout_weight="1"
+                    android:textColor="#E31D1D"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/_15sdp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gagan Status"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_5sdp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Not Checked In"
+                    android:layout_weight="1"
+                    android:textColor="#E31D1D"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/_15sdp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gagan Status"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:background="@drawable/unselected_btn"
+                    android:textSize="@dimen/_15sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Not Checked In"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:textStyle="bold"
+                    android:background="@drawable/selected_btn"
+                    android:gravity="center"
+                    android:padding="@dimen/_5sdp"
+                    android:textSize="@dimen/_15sdp"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

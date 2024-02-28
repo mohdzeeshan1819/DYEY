@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="#EAE4E4"
         tools:context=".homeFolder.ProfileFragment.SettingsFragment">
 
         <LinearLayout
@@ -36,24 +36,34 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+
                     <ImageView
                         android:id="@+id/profile_pic"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_default" />
+                        android:src="@drawable/ic_search_by_cuisin" />
 
                     <TextView
                         android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="bottom"
-                        android:gravity="center_horizontal"
-                        android:text="Xeeshan"
+                        android:gravity="center"
                         android:textStyle="bold"
-                        android:background="@null"
+                        android:background="#99000000"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_20sdp" />
+
+                    <ImageView
+                        android:id="@+id/settings"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/otp_bg"
+                        android:layout_gravity="end"
+                        android:layout_margin="@dimen/_15sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/settings" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -240,20 +250,7 @@
             </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="@dimen/_20sdp"
-                android:textStyle="bold"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:background="@drawable/selected_btn"
-                android:textColor="#F10606"
-                android:text="Logout Here" />
+
 
 
         </LinearLayout>

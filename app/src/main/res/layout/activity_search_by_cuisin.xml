@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp"
+        android:background="#EAE4E4"
         tools:context=".homeFolder.OfferFragment.CreateOffer.SearchByCuisin">
 
         <LinearLayout
@@ -21,9 +22,11 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="back"
+                android:textColor="@color/black"
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:paddingVertical="@dimen/_5sdp"
                 android:background="@drawable/unselected_btn"

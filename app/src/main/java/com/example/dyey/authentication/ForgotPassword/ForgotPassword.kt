@@ -28,10 +28,15 @@ class ForgotPassword : AppCompatActivity() {
         setContentView(binding.root)
         AppInfo.setContext(this)
 
+      init()
+    }
+    fun init(){
         binding.SignIn.setOnClickListener(){
             email = binding.email.text.toString().trim()
             forgotPassword(email)
+            Log.d("signIn","done")
         }
+
     }
 
     private fun forgotPassword(email: String){
@@ -47,6 +52,8 @@ class ForgotPassword : AppCompatActivity() {
                         Log.d("forgotpass2", userID)
                         val intent = Intent(this@ForgotPassword, Verification::class.java)
                         intent.putExtra("userID", userID)
+                        Log.d("userID1",userID.toString())
+
                         startActivity(intent)
                         finish()
 

@@ -150,7 +150,7 @@ class SignIn : AppCompatActivity() {
         if ( !email.contains("@") || !email.contains(".com") ) {
             Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show()
         }else if (!pass.contains("@") || pass.length<=5) {
-            Toast.makeText(this, "Please enter valid password", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter correct password", Toast.LENGTH_SHORT).show()
         }else{
              email = binding.email.text.toString().trim()
              pass = binding.password.text.toString().trim()

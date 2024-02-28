@@ -11,9 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".homeFolder.OfferFragment.OffersFragment">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:background="#EAE4E4"
             android:orientation="vertical">
 
 
@@ -25,15 +27,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginBottom="@dimen/_150sdp"
                 tools:listitem="@layout/users_recyclerview" />
+            <TextView
+                android:id="@+id/anchor_view"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/createoffers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_marginHorizontal="@dimen/_60sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/unselected_btn"
                 android:gravity="center_horizontal"
                 android:paddingVertical="@dimen/_5sdp"
@@ -45,6 +52,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/offers" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </FrameLayout>
 </layout>

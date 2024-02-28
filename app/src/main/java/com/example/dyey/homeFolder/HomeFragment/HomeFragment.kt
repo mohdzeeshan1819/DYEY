@@ -13,6 +13,7 @@ import com.example.dyey.apiInterfaces.AppInfo
 import com.example.dyey.apiInterfaces.RetrofitInstance
 import com.example.dyey.databinding.FragmentHomeBinding
 import com.example.dyey.homeFolder.HomeFragment.UserDetails.UsersProfile
+import com.example.dyey.homeFolder.OfferFragment.OffersDataClass
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +26,9 @@ class HomeFragment : Fragment(),OnItemClickListener {
     private val userList: ArrayList<Users> = ArrayList()
     private val retrofitInstance = RetrofitInstance()
     private val apiService: ApiServices? = retrofitInstance.apiService
+    private var call: Call<HomeDataClass>? = null
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +41,24 @@ class HomeFragment : Fragment(),OnItemClickListener {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fetchHomeData()
+        try {
+            fetchHomeData()
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        // Cancel the API call when the fragment is stopped
+        call?.cancel()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Cancel the API call when the fragment's view is destroyed
+        call?.cancel()
     }
     private fun fetchHomeData() {
         val request = HomeRequest()
@@ -100,8 +121,6 @@ class HomeFragment : Fragment(),OnItemClickListener {
         intent.putExtra("profilePic",user.profileImageUrl)
         intent.putExtra("height",user.height)
         intent.putExtra("status",user.adminStatus)
-
-
         startActivity(intent)
     }
 

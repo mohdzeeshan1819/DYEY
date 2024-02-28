@@ -16,6 +16,7 @@ import com.example.dyey.apiInterfaces.RetrofitInstance
 import com.example.dyey.apiInterfaces.RetrofitInstanceTwo
 import com.example.dyey.homeFolder.OfferFragment.CreateOffer.OfferEndActivty.OfferEnd
 import com.example.dyey.homeFolder.OfferFragment.CreateOffer.OnItemClickListeners
+import com.example.dyey.homeFolder.OfferFragment.CreateOffer.SearchByCuisin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,6 +28,16 @@ class RestaurantDetails : AppCompatActivity(), OnItemClickListenerss {
     private val restaurants: ArrayList<Results> = ArrayList()
     private val retrofitInstance = RetrofitInstanceTwo()
     private val apiService: ApiServices = retrofitInstance.apiService
+//    private val KEY_LATITUDE = "LATITUDE"
+//    private val KEY_LONGITUDE = "LONGITUDE"
+
+
+
+    companion object {
+        const val KEY_LATITUDE = "latitude"
+        const val KEY_LONGITUDE = "longitude"
+    }
+
 
 
 
@@ -38,15 +49,25 @@ class RestaurantDetails : AppCompatActivity(), OnItemClickListenerss {
 
         // Retrieve the selected location from SharedPreferences
         val selectedLocation = sharedPreferences.getString("SELECTED_LOCATION", "")
-
-
-
         val restaurantName=findViewById<TextView>(R.id.resturantName)
+        val back=findViewById<TextView>(R.id.back)
         restaurantName.text=selectedLocation.toString()
+
+        back.setOnClickListener(){
+            startActivity(Intent(this,SearchByCuisin::class.java))
+            finish()
+        }
 
         recyclerView = findViewById(R.id.recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        fetchRestaurantData()
+        val latitude = sharedPreferences.getString(KEY_LATITUDE, null)?.toDoubleOrNull()
+        val longitude = sharedPreferences.getString(KEY_LONGITUDE, null)?.toDoubleOrNull()
+        if (latitude != null && longitude != null) {
+            fetchRestaurantData(latitude, longitude)
+
+        }
+        Log.d("latlong","$latitude,$longitude")
+
 
     }
 
@@ -54,12 +75,14 @@ class RestaurantDetails : AppCompatActivity(), OnItemClickListenerss {
         adapter = RestaurantAdapter(restaurants,this)
         recyclerView.adapter = adapter
     }
-    private fun fetchRestaurantData() {
-        val location = "30.7333,76.7794"
+    private fun fetchRestaurantData(latitude: Double, longitude: Double) {
+
+        val selectedText =  sharedPreferences.getString("SELECTED_LOCATION", "")
+        val location = "$latitude,$longitude"
         val radius = 100000
-        val type = "Allrestaurant"
-        val keyword = "dinner"
-        val apiKey = "AIzaSyBnYM_Zz-icGMKAtSYHmiohQ3rD3V6lMEg"
+        val type = "$selectedText"
+        val keyword = "$selectedText"
+        val apiKey = "AIzaSyAysVHVKFJTJe-LKZtH-PVlwX53XH-wuIw"
 
         val call = apiService.getGoogleRestaurant(location, radius, type, keyword, apiKey)
         call.enqueue(object : Callback<RestaurantDataClass> {
@@ -96,8 +119,18 @@ class RestaurantDetails : AppCompatActivity(), OnItemClickListenerss {
     }
 
     override fun onItemClick(location: Results) {
-        sharedPreferences.edit().putString("SELECTED_LOCATION", location.toString()).apply()
+        // Save relevant data about the selected restaurant in SharedPreferences
+        val editor = sharedPreferences.edit()
+        editor.putString("SELECTED_RESTAURANT_NAME", location.name.toString())
+        editor.putString("SELECTED_RESTAURANT_ADDRESS", location.types.toString())
+        editor.putString("vicnity", location.vicinity.toString())
+
+        // Add more data as needed
+        editor.apply()
+
+        // Start the next activity
         val intent = Intent(this, OfferEnd::class.java)
         startActivity(intent)
     }
+
 }

@@ -29,6 +29,10 @@ class SearchByCuisin : AppCompatActivity(), OnItemClickListeners {
         val secondselectedText = sharedPreferences.getString("secondCard", "")
         binding.card1.text= selectedText.toString()
         binding.card2.text=secondselectedText.toString()
+        binding.back.setOnClickListener(){
+            startActivity(Intent(this,LocationCreate::class.java))
+            finish()
+        }
 
         recyclerView= binding.address
        recyclerView.layoutManager = LinearLayoutManager(this)

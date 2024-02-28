@@ -32,8 +32,8 @@ class RestaurantAdapter(private val personList: ArrayList<Results>, private val 
             .error(R.drawable.ic_logo2)
             .into(holder.imageView)
         holder.nameTextView.text = personList[position].name.toString()
-        holder.timeTextView.text = personList[position].userRatingsTotal.toString()
-        holder.locationTextView.text = personList[position].rating.toString()
+        holder.timeTextView.text = "Address : "+personList[position].vicinity.toString()
+        holder.locationTextView.text = "Rating : "+personList[position].rating.toString()
         holder.layout.setOnClickListener() {
             listener.onItemClick(location)
         }
