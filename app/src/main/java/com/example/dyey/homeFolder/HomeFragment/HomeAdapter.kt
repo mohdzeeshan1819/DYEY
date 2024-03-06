@@ -32,7 +32,6 @@ class HomeAdapter(private val itemList: ArrayList<Users>, private val listener: 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var view = convertView
         val viewHolder: ViewHolder
-
         if (view == null) {
             view = LayoutInflater.from(parent?.context).inflate(R.layout.home_recyclerview, parent, false)
             viewHolder = ViewHolder(view)
@@ -61,7 +60,7 @@ class HomeAdapter(private val itemList: ArrayList<Users>, private val listener: 
         return view!!
     }
 
-    private class ViewHolder(view: View) {
+    class ViewHolder(view: View) {
         val imageView: ImageView = view.findViewById(R.id.image)
         val name:TextView = view.findViewById(R.id.name)
         val location :TextView = view.findViewById(R.id.location)

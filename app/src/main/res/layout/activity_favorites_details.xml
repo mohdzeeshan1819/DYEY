@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,7 +13,7 @@
         android:padding="@dimen/_10sdp"
         android:orientation="vertical"
         android:background="#EAE4E4"
-        tools:context=".homeFolder.ProfileFragment.SettingActiviy.Subscription.SubscriptionDetails">
+        tools:context=".homeFolder.ProfileFragment.SettingActiviy.FavoritesProfile.FavoritesDetails">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,48 +40,27 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Edit Profile"
+                android:text="My Favorites"
                 android:layout_weight="1"
                 android:textSize="@dimen/_18sdp"
                 android:maxLines="1"
-                android:visibility="invisible"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:gravity="center" />
         </LinearLayout>
-        <ImageView
-            android:id="@+id/image1"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_130sdp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_subscription_details_logo"
-            android:scaleType="fitXY" />
 
-        <TextView
+        <GridView
+            android:id="@+id/favorite"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CURRENT PLAN"
-            android:textSize="@dimen/_20sdp"
-            android:maxLines="1"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:gravity="center" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="10 Days Left!"
-            android:textSize="@dimen/_18sdp"
-            android:maxLines="1"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textColor="#B93E8F"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:gravity="center" />
-
-
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:numColumns="2"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:verticalSpacing="@dimen/_10sdp"
+            android:horizontalSpacing="@dimen/_20sdp"
+            tools:listitem="@layout/home_recyclerview" />
 
     </LinearLayout>
 </layout>

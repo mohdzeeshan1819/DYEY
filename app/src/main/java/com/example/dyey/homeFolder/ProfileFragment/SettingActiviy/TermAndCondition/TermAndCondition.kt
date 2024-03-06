@@ -1,5 +1,6 @@
 package com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.TermAndCondition
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import com.example.dyey.apiInterfaces.ApiServices
 import com.example.dyey.apiInterfaces.AppInfo
 import com.example.dyey.apiInterfaces.RetrofitInstance
 import com.example.dyey.databinding.ActivityTermAndConditionBinding
+import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.SettingActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +30,9 @@ class TermAndCondition : AppCompatActivity() {
         val name=intent.getStringExtra("pageName")
         binding.pageName.text=name.toString()
         termAndCondition()
+        binding.back.setOnClickListener {
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
     }
 
 

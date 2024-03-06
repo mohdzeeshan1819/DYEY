@@ -163,7 +163,7 @@ class EditProfile : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             validation()
         }
         binding.back.setOnClickListener {
-            startActivity(Intent(this, IntroductionActivity::class.java))
+            startActivity(Intent(this, SettingActivity::class.java))
         }
 
         binding.dobtext.setOnClickListener() {

@@ -26,6 +26,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".homeFolder.ProfileFragment.SettingActiviy.FavoritesProfile.FavoritesDetails"
+            android:exported="false" />
+        <activity
             android:name=".homeFolder.ProfileFragment.SettingActiviy.Subscription.SubscriptionDetails"
             android:exported="false" />
         <activity

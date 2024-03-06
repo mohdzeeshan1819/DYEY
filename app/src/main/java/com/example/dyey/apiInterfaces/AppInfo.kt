@@ -55,10 +55,7 @@ object AppInfo {
         editorUser?.commit()
     }
 
-    fun setGender(gender: String) {
-        editorUser?.putString("Gender", gender)
-        editorUser?.commit()
-    }
+
 
     fun setDateOfBirth(dob: String) {
         editorUser?.putString("DOB", dob)
@@ -90,6 +87,7 @@ object AppInfo {
         editorUser?.commit()
     }
 
+
     fun getFirstName(): String? {
         return sharedPreferencesUser?.getString("FirstName", null)
     }
@@ -108,6 +106,11 @@ object AppInfo {
 
     fun getGender(): String? {
         return sharedPreferencesUser?.getString("Gender", null)
+    }
+
+    fun setGender(gender: String) {
+        editorUser?.putString("Gender", gender)
+        editorUser?.commit()
     }
 
     fun getDateOfBirth(): String? {

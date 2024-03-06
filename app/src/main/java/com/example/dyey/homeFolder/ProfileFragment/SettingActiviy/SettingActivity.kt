@@ -19,6 +19,7 @@ import com.example.dyey.homeFolder.HomeFragment.HomeDataClass
 import com.example.dyey.homeFolder.HomeFragment.HomeRequest
 import com.example.dyey.homeFolder.ProfileFragment.EditProfile.EditProfile
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.ContactSupport.ContactSupport
+import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.FavoritesProfile.FavoritesDetails
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.Subscription.Subscription
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.TermAndCondition.TermAndCondition
 import com.example.dyey.homeFolder.ProfileFragment.SettingsFragment
@@ -57,6 +58,9 @@ class SettingActivity : AppCompatActivity() {
         }
         binding.deleteAccount.setOnClickListener(){
             deleteAccount()
+        }
+        binding.myfav.setOnClickListener(){
+            startActivity(Intent(this@SettingActivity,FavoritesDetails::class.java))
         }
         binding.termAndCondition.setOnClickListener(){
             val intent= Intent(this@SettingActivity,TermAndCondition::class.java)

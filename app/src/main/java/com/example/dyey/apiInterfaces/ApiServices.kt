@@ -12,6 +12,8 @@ import com.example.dyey.authentication.SignIn.SignInResponse
 import com.example.dyey.authentication.SignUp.SignupResponse
 import com.example.dyey.homeFolder.HomeFragment.HomeDataClass
 import com.example.dyey.homeFolder.HomeFragment.HomeRequest
+import com.example.dyey.homeFolder.HomeFragment.UserDetails.favRequest
+import com.example.dyey.homeFolder.HomeFragment.UserDetails.favResponse
 import com.example.dyey.homeFolder.OfferFragment.CreateOffer.OfferEndActivty.CreateOfferRequest
 import com.example.dyey.homeFolder.OfferFragment.CreateOffer.OfferEndActivty.CreateOfferResponse
 import com.example.dyey.homeFolder.OfferFragment.CreateOffer.RestaurantDetails.RestaurantDataClass
@@ -26,6 +28,8 @@ import com.example.dyey.homeFolder.ProfileFragment.ProfileDataClass
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.ContactSupport.ContactSupportRequest
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.ContactSupport.ContactSupportResponce
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.DeleteAccountResponse
+import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.FavoritesProfile.FavoriteDataClass
+import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.FavoritesProfile.FavoritesDetails
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.LogoutRequestDataClass
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.LogoutResponse
 import com.example.dyey.homeFolder.ProfileFragment.SettingActiviy.TermAndCondition.TermAndConditionRequest
@@ -127,4 +131,12 @@ interface ApiServices {
 
     @POST("contact-support")
     fun contactSupport(@Body request: ContactSupportRequest): Call<ContactSupportResponce>
+
+    @POST("favorites")
+    fun addFavorite(@Header("Authorization") token: String?,@Body request: favRequest): Call<favResponse>
+
+
+
+    @GET("my-favorites")
+    fun getFavorite(@Header("Authorization") token:String?):Call<FavoriteDataClass>
 }
